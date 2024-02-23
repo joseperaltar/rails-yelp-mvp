@@ -1,0 +1,16 @@
+<div class="card mt-3">
+    <%= link_to restaurant.name, restaurant_path(restaurant) %>
+    <p><%= restaurant.address %></p>
+    <p><%= restaurant.phone_number %></p>
+    <div class="d-flex">
+      <% restaurant.reviews.each do |review| %>
+        <div class="card">
+          <%= review.content %>
+          <%= link_to "Delete",
+            review_path(review),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+          %>
+        </div>
+      <% end %>
+    </div>
+  </div>
